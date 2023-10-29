@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b771ivctnyube"]
 
-[ext_resource type="Script" path="res://gd/default_player.gd" id="1_k2pit"]
+[ext_resource type="Script" path="res://gd/player_default.gd" id="1_k2pit"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rwqqx"]
 radius = 0.1
@@ -9,7 +9,7 @@ radius = 0.1
 radius = 0.1
 height = 0.2
 
-[node name="DefaultPlayer" type="CharacterBody3D"]
+[node name="PlayerDefault" type="CharacterBody3D"]
 script = ExtResource("1_k2pit")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

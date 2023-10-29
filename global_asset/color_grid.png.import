@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://uxk4c8budaiq"
-path.bptc="res://.godot/imported/abandoned_hopper_terminal_04_2k.hdr-72f2a3a1b45119bd94da5e948baa51b5.bptc.ctex"
+uid="uid://dovdtduat2ofp"
+path.s3tc="res://.godot/imported/color_grid.png-619fbd2dacafec936090b7f34a47512e.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://global_asset/kira/textures/abandoned_hopper_terminal_04_2k.hdr"
-dest_files=["res://.godot/imported/abandoned_hopper_terminal_04_2k.hdr-72f2a3a1b45119bd94da5e948baa51b5.bptc.ctex"]
+source_file="res://global_asset/color_grid.png"
+dest_files=["res://.godot/imported/color_grid.png-619fbd2dacafec936090b7f34a47512e.s3tc.ctex"]
 
 [params]
 

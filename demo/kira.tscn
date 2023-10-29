@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://c5mn3hokil1bh"]
 
-[ext_resource type="Script" path="res://gd/Kira.gd" id="1_ans1o"]
+[ext_resource type="Script" path="res://gd/kira.gd" id="1_ans1o"]
 [ext_resource type="Texture2D" uid="uid://bhcjhs6802xux" path="res://icon.svg" id="2_egfxr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dk40o"]

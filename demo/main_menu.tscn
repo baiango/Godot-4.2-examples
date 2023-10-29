@@ -31,10 +31,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -300.5
-offset_top = -81.0
-offset_right = 300.5
-offset_bottom = 81.0
+offset_left = -232.5
+offset_top = -92.5
+offset_right = 232.5
+offset_bottom = 92.5
 grow_horizontal = 2
 grow_vertical = 2
 columns = 2
@@ -59,10 +59,9 @@ layout_mode = 2
 text = "SDFGI"
 flat = true
 
-[node name="Character" type="Button" parent="Border/GridContainer"]
+[node name="Tranform3D" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
-text = "Character"
-flat = true
+text = "Tranform3D"
 
 [node name="Tween" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
@@ -82,8 +81,38 @@ text = "NumberSum (Object-Oriented Programming)"
 layout_mode = 2
 text = "Third-person shooter"
 
+[node name="BottomRight" type="Control" parent="Border"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Keyboard" type="Label" parent="Border/BottomRight"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "To show start menu: ESC
+To move: RMB/None + (w, s, a, d)&(q, e) * shift
+"
+horizontal_alignment = 2
+vertical_alignment = 2
+
 [connection signal="pressed" from="Border/GridContainer/MVVM" to="." method="_on_mvvm_pressed"]
 [connection signal="pressed" from="Border/GridContainer/WST" to="." method="_on_wst_pressed"]
 [connection signal="pressed" from="Border/GridContainer/Blackbody" to="." method="_on_blackbody_pressed"]
+[connection signal="pressed" from="Border/GridContainer/Tranform3D" to="." method="_on_tranform_3d_pressed"]
 [connection signal="pressed" from="Border/GridContainer/NumberSum" to="." method="_on_number_sum_pressed"]
 [connection signal="pressed" from="Border/GridContainer/TPS" to="." method="_on_tps_pressed"]

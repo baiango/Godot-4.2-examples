@@ -1,0 +1,164 @@
+[gd_scene load_steps=18 format=3 uid="uid://586a6rsb2paq"]
+
+[ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/player_default.tscn" id="1_rvxp3"]
+[ext_resource type="Texture2D" uid="uid://uxk4c8budaiq" path="res://global_asset/kira/textures/abandoned_hopper_terminal_04_2k.hdr" id="2_8cglw"]
+[ext_resource type="Script" path="res://gd/player_viewport_ctrl.gd" id="2_wjma7"]
+[ext_resource type="Texture2D" uid="uid://dovdtduat2ofp" path="res://global_asset/color_grid.png" id="3_5qhwe"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="5_qxgr7"]
+[ext_resource type="Script" path="res://gd/tranform3d_label.gd" id="6_yec76"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_16dgc"]
+
+[sub_resource type="Gradient" id="Gradient_b2npk"]
+offsets = PackedFloat32Array(0, 0.247748, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.225201, 0.177645, 0.522644, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_dtflg"]
+noise_type = 2
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7mf87"]
+invert = true
+seamless = true
+color_ramp = SubResource("Gradient_b2npk")
+noise = SubResource("FastNoiseLite_dtflg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ts6di"]
+albedo_texture = SubResource("NoiseTexture2D_7mf87")
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s7qsv"]
+panorama = ExtResource("2_8cglw")
+
+[sub_resource type="Sky" id="Sky_lf6dc"]
+sky_material = SubResource("PanoramaSkyMaterial_s7qsv")
+
+[sub_resource type="Environment" id="Environment_f2dvy"]
+background_mode = 2
+sky = SubResource("Sky_lf6dc")
+tonemap_mode = 1
+tonemap_white = 16.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jopnc"]
+albedo_texture = ExtResource("3_5qhwe")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ra180"]
+material = SubResource("StandardMaterial3D_jopnc")
+size = Vector2(100, 100)
+
+[sub_resource type="LabelSettings" id="LabelSettings_efghf"]
+font_size = 24
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="World" type="Node3D"]
+
+[node name="Target" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_16dgc")
+surface_material_override/0 = SubResource("StandardMaterial3D_ts6di")
+
+[node name="PlayerViewpCtrl" parent="." instance=ExtResource("1_rvxp3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
+script = ExtResource("2_wjma7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_f2dvy")
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("PlaneMesh_ra180")
+
+[node name="StartMenu" parent="." instance=ExtResource("5_qxgr7")]
+
+[node name="Full" type="CanvasLayer" parent="."]
+
+[node name="Border" type="Control" parent="Full"]
+layout_mode = 3
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BottomLeft" type="Control" parent="Full/Border"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -0.0400391
+offset_right = 244.0
+offset_bottom = -0.0400391
+grow_vertical = 0
+
+[node name="rot_x" type="HSlider" parent="Full/Border/BottomLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -73.48
+offset_bottom = -57.48
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+max_value = 360.0
+
+[node name="rot_y" type="HSlider" parent="Full/Border/BottomLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -49.48
+offset_bottom = -33.48
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+max_value = 360.0
+
+[node name="rot_z" type="HSlider" parent="Full/Border/BottomLeft"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.52
+offset_top = -25.96
+offset_right = 0.479996
+offset_bottom = -9.95996
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+max_value = 360.0
+
+[node name="BottomRight" type="Control" parent="Full/Border"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Stat" type="Label" parent="Full/Border/BottomRight"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Test"
+label_settings = SubResource("LabelSettings_efghf")
+horizontal_alignment = 2
+vertical_alignment = 2
+script = ExtResource("6_yec76")
+
+[connection signal="value_changed" from="Full/Border/BottomLeft/rot_x" to="Full/Border/BottomRight/Stat" method="_on_rot_x_value_changed"]
+[connection signal="value_changed" from="Full/Border/BottomLeft/rot_y" to="Full/Border/BottomRight/Stat" method="_on_rot_y_value_changed"]
+[connection signal="value_changed" from="Full/Border/BottomLeft/rot_z" to="Full/Border/BottomRight/Stat" method="_on_rot_z_value_changed"]

@@ -1,15 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0gskm7yu2i8t"]
+[gd_scene load_steps=4 format=3 uid="uid://d0gskm7yu2i8t"]
 
 [ext_resource type="Script" path="res://gd/start_menu.gd" id="1_htdlj"]
 [ext_resource type="Texture2D" uid="uid://bmvrotjopnvns" path="res://global_asset/kenney_ui-pack/PNG/blue_button04.png" id="2_5na1v"]
+[ext_resource type="FontFile" uid="uid://n3cqj8s6j173" path="res://global_asset/pixel-clear-condensed.ttf" id="2_h6ecq"]
 
 [node name="StartMenu" type="CanvasLayer"]
-visible = false
+layer = 128
 
 [node name="Popup" type="Popup" parent="."]
 process_mode = 3
 initial_position = 2
 size = Vector2i(512, 256)
+visible = true
 unresizable = false
 borderless = false
 script = ExtResource("1_htdlj")
@@ -32,7 +34,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.392157)
 metadata/_edit_lock_ = true
 
-[node name="MainMenu" type="Button" parent="Popup/Full"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Popup/Full"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -40,15 +42,30 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -99.0
-offset_top = -28.5
+offset_top = -63.0
 offset_right = 99.0
-offset_bottom = 28.5
+offset_bottom = 63.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Resume" type="Button" parent="Popup/Full/VBoxContainer"]
+layout_mode = 2
 size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_h6ecq")
+theme_override_font_sizes/font_size = 24
+text = "Resume"
+icon = ExtResource("2_5na1v")
+icon_alignment = 1
+
+[node name="MainMenu" type="Button" parent="Popup/Full/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("2_h6ecq")
+theme_override_font_sizes/font_size = 24
 text = "Quit to title"
 icon = ExtResource("2_5na1v")
 icon_alignment = 1
 
 [connection signal="popup_hide" from="Popup" to="Popup" method="_on_popup_hide"]
-[connection signal="pressed" from="Popup/Full/MainMenu" to="Popup" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Popup/Full/VBoxContainer/Resume" to="Popup" method="_on_resume_pressed"]
+[connection signal="pressed" from="Popup/Full/VBoxContainer/MainMenu" to="Popup" method="_on_main_menu_pressed"]

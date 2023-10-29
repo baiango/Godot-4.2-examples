@@ -1,0 +1,54 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0gskm7yu2i8t"]
+
+[ext_resource type="Script" path="res://gd/start_menu.gd" id="1_htdlj"]
+[ext_resource type="Texture2D" uid="uid://bmvrotjopnvns" path="res://global_asset/kenney_ui-pack/PNG/blue_button04.png" id="2_5na1v"]
+
+[node name="StartMenu" type="CanvasLayer"]
+visible = false
+
+[node name="Popup" type="Popup" parent="."]
+process_mode = 3
+initial_position = 2
+size = Vector2i(512, 256)
+unresizable = false
+borderless = false
+script = ExtResource("1_htdlj")
+
+[node name="Full" type="Control" parent="Popup"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Bg" type="ColorRect" parent="Popup/Full"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.392157)
+metadata/_edit_lock_ = true
+
+[node name="MainMenu" type="Button" parent="Popup/Full"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -99.0
+offset_top = -28.5
+offset_right = 99.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+text = "Quit to title"
+icon = ExtResource("2_5na1v")
+icon_alignment = 1
+
+[connection signal="popup_hide" from="Popup" to="Popup" method="_on_popup_hide"]
+[connection signal="pressed" from="Popup/Full/MainMenu" to="Popup" method="_on_main_menu_pressed"]

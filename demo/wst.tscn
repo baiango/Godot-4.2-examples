@@ -1,0 +1,41 @@
+[gd_scene load_steps=10 format=3 uid="uid://f21pqr0rqqib"]
+
+[ext_resource type="Material" uid="uid://bxddsxbpae5uo" path="res://mat/floor.material" id="1_nnoqc"]
+[ext_resource type="Script" path="res://gmm/auto_uv_scale.gd" id="5_4drcy"]
+[ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/default_player.tscn" id="6_t60tn"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="7_ntakj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_utoth"]
+material = ExtResource("1_nnoqc")
+size = Vector3(2, 1, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4xwwo"]
+data = PackedVector3Array(-1, 0.5, 1, 1, 0.5, 1, -1, -0.5, 1, 1, 0.5, 1, 1, -0.5, 1, -1, -0.5, 1, 1, 0.5, -1, -1, 0.5, -1, 1, -0.5, -1, -1, 0.5, -1, -1, -0.5, -1, 1, -0.5, -1, 1, 0.5, 1, 1, 0.5, -1, 1, -0.5, 1, 1, 0.5, -1, 1, -0.5, -1, 1, -0.5, 1, -1, 0.5, -1, -1, 0.5, 1, -1, -0.5, -1, -1, 0.5, 1, -1, -0.5, 1, -1, -0.5, -1, 1, 0.5, 1, -1, 0.5, 1, 1, 0.5, -1, -1, 0.5, 1, -1, 0.5, -1, 1, 0.5, -1, -1, -0.5, 1, 1, -0.5, 1, -1, -0.5, -1, 1, -0.5, 1, 1, -0.5, -1, -1, -0.5, -1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_h7xhd"]
+
+[sub_resource type="Sky" id="Sky_52gko"]
+sky_material = SubResource("ProceduralSkyMaterial_h7xhd")
+
+[sub_resource type="Environment" id="Environment_fu08j"]
+background_mode = 2
+sky = SubResource("Sky_52gko")
+
+[node name="World" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_utoth")
+script = ExtResource("5_4drcy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4xwwo")
+
+[node name="DefaultPlayer" parent="." instance=ExtResource("6_t60tn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 2)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fu08j")
+
+[node name="StartMenu" parent="." instance=ExtResource("7_ntakj")]

@@ -1,0 +1,66 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3v74j10ukjqk"]
+
+[ext_resource type="Script" path="res://gmm/mvvm_v.gd" id="1_udjmf"]
+[ext_resource type="Texture2D" uid="uid://5vkvfi6dpdhu" path="res://global_asset/alice.png" id="1_uji5f"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="3_n4cdd"]
+
+[node name="PhotoViewer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Border" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImgSelect" type="HBoxContainer" parent="Border"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -31.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Left" type="Button" parent="Border/ImgSelect"]
+layout_mode = 2
+text = "<"
+
+[node name="Right" type="Button" parent="Border/ImgSelect"]
+layout_mode = 2
+text = ">"
+
+[node name="Middle" type="Control" parent="Border"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ImgDisplay" type="Sprite2D" parent="Border/Middle"]
+texture = ExtResource("1_uji5f")
+script = ExtResource("1_udjmf")
+
+[node name="StartMenu" parent="." instance=ExtResource("3_n4cdd")]
+
+[connection signal="pressed" from="Border/ImgSelect/Left" to="Border/Middle/ImgDisplay" method="_on_left_pressed"]
+[connection signal="pressed" from="Border/ImgSelect/Right" to="Border/Middle/ImgDisplay" method="_on_right_pressed"]

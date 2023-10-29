@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccqyljipaqtsi"]
+
+[ext_resource type="Script" path="res://gd/numbersum_oop.gd" id="1_742l6"]
+[ext_resource type="Script" path="res://gd/numbersum_fp.gd" id="2_hdaaj"]
+[ext_resource type="Script" path="res://gd/numbersum_pp.gd" id="3_cv1w2"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="4_ngh5l"]
+
+[node name="NumberSum" type="Node2D"]
+
+[node name="OOP" type="Node" parent="."]
+script = ExtResource("1_742l6")
+
+[node name="FP" type="Node" parent="."]
+script = ExtResource("2_hdaaj")
+
+[node name="PP" type="Node" parent="."]
+script = ExtResource("3_cv1w2")
+
+[node name="StartMenu" parent="." instance=ExtResource("4_ngh5l")]

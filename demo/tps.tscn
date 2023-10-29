@@ -1,0 +1,41 @@
+[gd_scene load_steps=9 format=3 uid="uid://dv80gyewcshnx"]
+
+[ext_resource type="Material" uid="uid://bxddsxbpae5uo" path="res://mat/floor.material" id="1_8u2cu"]
+[ext_resource type="PackedScene" uid="uid://c5mn3hokil1bh" path="res://demo/kira.tscn" id="1_44the"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="3_q3ibj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_4svwq"]
+material = ExtResource("1_8u2cu")
+size = Vector2(50, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4qoty"]
+data = PackedVector3Array(25, 0, 25, -25, 0, 25, 25, 0, -25, -25, 0, 25, -25, 0, -25, 25, 0, -25)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_gwnyf"]
+
+[sub_resource type="Sky" id="Sky_26nm1"]
+sky_material = SubResource("ProceduralSkyMaterial_gwnyf")
+
+[sub_resource type="Environment" id="Environment_i3sgf"]
+background_mode = 2
+sky = SubResource("Sky_26nm1")
+
+[node name="World" type="Node3D"]
+
+[node name="Kira" parent="." instance=ExtResource("1_44the")]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_4svwq")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4qoty")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_i3sgf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.695787, 0.635114, -0.335425, 0, 0.467004, 0.884255, 0.718248, -0.615254, 0.324936, 0, 0, 0)
+
+[node name="StartMenu" parent="." instance=ExtResource("3_q3ibj")]

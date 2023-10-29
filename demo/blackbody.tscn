@@ -1,0 +1,147 @@
+[gd_scene load_steps=7 format=3 uid="uid://cppwvpytcaxf0"]
+
+[ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/default_player.tscn" id="1_x8yd8"]
+[ext_resource type="Script" path="res://gmm/auto_blackbody.gd" id="2_j36g0"]
+[ext_resource type="Material" uid="uid://bxddsxbpae5uo" path="res://mat/floor.material" id="3_fwfde"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="4_0iq6w"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_70oo6"]
+material = ExtResource("3_fwfde")
+size = Vector2(20, 20)
+
+[sub_resource type="Environment" id="Environment_x5syh"]
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0001
+
+[node name="World" type="Node3D"]
+
+[node name="DefaultPlayer" parent="." instance=ExtResource("1_x8yd8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Lights" type="Node3D" parent="."]
+
+[node name="1000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1, -7.5)
+light_color = Color(1, 0.266355, 0, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+
+[node name="2000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -7.5)
+light_color = Color(1, 0.536739, 0.0545258, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 2000
+
+[node name="3000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -7.5)
+light_color = Color(1, 0.694903, 0.431048, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 3000
+
+[node name="4000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, -7.5)
+light_color = Color(1, 0.807122, 0.651299, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 4000
+
+[node name="5000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, -2.5)
+light_color = Color(1, 0.894167, 0.80757, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 5000
+
+[node name="5500" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, -2.5)
+light_color = Color(1, 0.931345, 0.871551, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 5500
+
+[node name="6000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, -2.5)
+light_color = Color(1, 0.965287, 0.928783, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 6000
+
+[node name="6500" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1, -2.5)
+light_color = Color(1, 0.99651, 0.980556, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 6500
+
+[node name="7000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 2.5)
+light_color = Color(0.95142, 0.949558, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 7000
+
+[node name="7500" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1, 2.5)
+light_color = Color(0.901397, 0.920925, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 7500
+
+[node name="8000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 2.5)
+light_color = Color(0.867508, 0.901134, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 8000
+
+[node name="9000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 2.5)
+light_color = Color(0.821897, 0.873961, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 9000
+
+[node name="10000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 2.5)
+light_color = Color(0.790997, 0.855179, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 10000
+
+[node name="15000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 1, 7.5)
+light_color = Color(0.710007, 0.804382, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 15000
+
+[node name="20000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 1, 7.5)
+light_color = Color(0.669426, 0.777986, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 20000
+
+[node name="30000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 1, 7.5)
+light_color = Color(0.623048, 0.746956, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 30000
+
+[node name="40000" type="OmniLight3D" parent="Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5, 1, 7.5)
+light_color = Color(0.594801, 0.727566, 1, 1)
+light_volumetric_fog_energy = 250000.0
+script = ExtResource("2_j36g0")
+temperature = 40000
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_70oo6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x5syh")
+
+[node name="StartMenu" parent="." instance=ExtResource("4_0iq6w")]

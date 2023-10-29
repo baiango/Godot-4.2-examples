@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6i5orr0t28du"]
+
+[ext_resource type="Script" path="res://gd/menu_screen.gd" id="1_urj8p"]
+[ext_resource type="Texture2D" uid="uid://bu0qox0v462l6" path="res://global_asset/kenney_ui-pack/PNG/blue_button09.png" id="2_h2611"]
+
+[node name="MenuScreem" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_urj8p")
+metadata/_edit_lock_ = true
+
+[node name="Border" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="GridContainer" type="GridContainer" parent="Border"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.5
+offset_top = -81.0
+offset_right = 300.5
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+columns = 2
+metadata/_edit_lock_ = true
+
+[node name="MVVM" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "Model-View-ViewModel"
+icon = ExtResource("2_h2611")
+alignment = 0
+
+[node name="WST" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "World Space Texture"
+
+[node name="Blackbody" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "Blackbody"
+
+[node name="SDFGI" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "SDFGI"
+flat = true
+
+[node name="Character" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "Character"
+flat = true
+
+[node name="Tween" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "Tween"
+flat = true
+
+[node name="AudioStreamPlayer3D" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "AudioStreamPlayer3D"
+flat = true
+
+[node name="NumberSum" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "NumberSum (Object-Oriented Programming)"
+
+[node name="TPS" type="Button" parent="Border/GridContainer"]
+layout_mode = 2
+text = "Third-person shooter"
+
+[connection signal="pressed" from="Border/GridContainer/MVVM" to="." method="_on_mvvm_pressed"]
+[connection signal="pressed" from="Border/GridContainer/WST" to="." method="_on_wst_pressed"]
+[connection signal="pressed" from="Border/GridContainer/Blackbody" to="." method="_on_blackbody_pressed"]
+[connection signal="pressed" from="Border/GridContainer/NumberSum" to="." method="_on_number_sum_pressed"]
+[connection signal="pressed" from="Border/GridContainer/TPS" to="." method="_on_tps_pressed"]

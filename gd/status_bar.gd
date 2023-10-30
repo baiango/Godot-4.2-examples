@@ -31,19 +31,19 @@ var keymap := {
 
 
 func _process(_delta: float) -> void:
-	set_text(cleanse_dictionary_to_string(first_layer_only(keymap)))
+	set_text(cleanse_dictionary_to_string(keymap))
 	if Input.is_action_pressed("rmb"):
-		set_text(cleanse_dictionary_to_string(first_layer_only(keymap["RMB"]["next"])))
+		set_text(cleanse_dictionary_to_string(keymap["RMB"]["next"]))
 
 
 func cleanse_dictionary_to_string(dict: Dictionary) -> String:
-	return cutoff(str(dict), 1, -1).replace("\"", "").replace(",", " | ")
+	return cutoff(str(first_layer_only(dict)), 1, -1).replace("\"", "").replace(",", " | ")
 
 
-func first_layer_only(input: Dictionary) -> Dictionary:
+func first_layer_only(dict: Dictionary) -> Dictionary:
 	var ret := {}
-	for key in input.keys():
-		ret[key] = input[key]["name"]
+	for key in dict.keys():
+		ret[key] = dict[key]["name"]
 
 	return ret
 

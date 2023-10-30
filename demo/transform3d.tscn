@@ -133,7 +133,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 target_node = NodePath("../../../../../Target")
 
-[node name="Rotation" parent="Full/Border/BottomLeft/VBoxContainer" node_paths=PackedStringArray("target_node") instance=ExtResource("7_gfisr")]
+[node name="Rotation_degrees" parent="Full/Border/BottomLeft/VBoxContainer" node_paths=PackedStringArray("target_node") instance=ExtResource("7_gfisr")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4

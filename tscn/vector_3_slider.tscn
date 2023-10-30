@@ -69,7 +69,3 @@ text = "1.000"
 [node name="DoubleClick" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
-
-[connection signal="button_down" from="Right/X" to="." method="_on_x_button_down"]
-[connection signal="button_down" from="Right/Y" to="." method="_on_y_button_down"]
-[connection signal="button_down" from="Right/Z" to="." method="_on_z_button_down"]

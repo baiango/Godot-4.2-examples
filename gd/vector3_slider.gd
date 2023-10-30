@@ -10,11 +10,9 @@ extends HBoxContainer
 
 var hold := false
 var initial_mouse_position := Vector2.ZERO
-var vec_multiply := Vector3.ZERO
-var target_button := -1
 var initial_target_vec := Vector3.ZERO
-var target_axis := -1
 var click_count := 0
+var is_button_down := Vector3.ZERO
 var is_focused := Vector3.ZERO
 var is_hovered := Vector3.ZERO
 
@@ -43,7 +41,6 @@ func _process(_delta: float) -> void:
 		handle_vec()
 	if Input.is_action_just_released("lmb"):
 		hold = false
-		target_axis = -1
 	if Input.is_action_just_pressed("lmb"):
 		update_timer()
 
@@ -65,7 +62,7 @@ func handle_vec() -> void:
 			name.to_lower(),
 			initial_target_vec
 			+ Vector3.ONE * mouse_pos_difference * step_val
-			* vec_multiply
+			* is_button_down
 		)
 
 
@@ -73,9 +70,10 @@ func update_timer() -> void:
 	click_count += 1
 	if click_count >= 2 and not $DoubleClick.is_stopped():
 		click_count = 0
-		is_hovered
+
 		var target_node_vec: Vector3 = target_node.get(name.to_lower())
 		var is_focused_and_hovered_xor := xor_vector3(is_focused * is_hovered, Vector3.ONE)
+
 		target_node.set(
 			name.to_lower(),
 			target_node_vec
@@ -105,15 +103,15 @@ func xor_vector3(v1: Vector3, v2: Vector3) -> Vector3:
 
 func _on_x_button_down() -> void:
 	init_hold()
-	vec_multiply = Vector3(1.0, 0.0, 0.0)
+	is_button_down = Vector3(1.0, 0.0, 0.0)
 
 func _on_y_button_down() -> void:
 	init_hold()
-	vec_multiply = Vector3(0.0, 1.0, 0.0)
+	is_button_down = Vector3(0.0, 1.0, 0.0)
 
 func _on_z_button_down() -> void:
 	init_hold()
-	vec_multiply = Vector3(0.0, 0.0, 1.0)
+	is_button_down = Vector3(0.0, 0.0, 1.0)
 
 
 func _on_x_focus_entered() -> void:

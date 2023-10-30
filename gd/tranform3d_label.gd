@@ -12,9 +12,9 @@ func _process(_delta: float) -> void:
 		"Scale: ", target_node.get_scale(), "\n",
 		"Rotation_degrees: ", target_node.get_rotation_degrees(), "\n",
 		"Transform3D: ",
-		prt_basis.x.snapped(vec3_from_float(0.001)), ", ", snappedf(prt_origin.x, 0.01), "\n",
-		prt_basis.y.snapped(vec3_from_float(0.001)), ", ", snappedf(prt_origin.y, 0.01), "\n",
-		prt_basis.z.snapped(vec3_from_float(0.001)), ", ", snappedf(prt_origin.z, 0.01), "\n",
+		prt_basis.x.snapped(vec3_from_float(0.001)), " * ", snappedf(prt_origin.x, 0.01), "\n",
+		prt_basis.y.snapped(vec3_from_float(0.001)), " * ", snappedf(prt_origin.y, 0.01), "\n",
+		prt_basis.z.snapped(vec3_from_float(0.001)), " * ", snappedf(prt_origin.z, 0.01), "\n",
 	]))
 
 

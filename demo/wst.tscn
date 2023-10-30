@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://f21pqr0rqqib"]
 
-[ext_resource type="Material" uid="uid://bxddsxbpae5uo" path="res://mat/floor.material" id="1_nnoqc"]
+[ext_resource type="Material" uid="uid://bxddsxbpae5uo" path="res://global_asset/material/floor.material" id="1_nnoqc"]
 [ext_resource type="Script" path="res://gmm/auto_uv_scale.gd" id="5_4drcy"]
-[ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/default_player.tscn" id="6_t60tn"]
-[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="7_ntakj"]
+[ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/player_default.tscn" id="6_t60tn"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://tscn/start_menu.tscn" id="7_ntakj"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_utoth"]
 material = ExtResource("1_nnoqc")

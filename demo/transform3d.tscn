@@ -42,10 +42,11 @@ tonemap_white = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jopnc"]
 albedo_texture = ExtResource("4_f406o")
+texture_filter = 2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ra180"]
 material = SubResource("StandardMaterial3D_jopnc")
-size = Vector2(100, 100)
+size = Vector2(160, 160)
 
 [sub_resource type="LabelSettings" id="LabelSettings_0hxc1"]
 outline_size = 12

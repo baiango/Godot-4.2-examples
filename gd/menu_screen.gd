@@ -19,6 +19,9 @@ func _on_tps_pressed() -> void:
 func _on_transform_3d_pressed() -> void:
 	load_map("res://demo/transform3d.tscn")
 
+func _on_fps_lobby_pressed() -> void:
+	load_map("res://demo/fps_lobby.tscn")
+
 
 func load_map(scene_path: String) -> void:
 	get_tree().change_scene_to_file(scene_path)

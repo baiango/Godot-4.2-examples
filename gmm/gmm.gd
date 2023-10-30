@@ -1,28 +1,39 @@
 # Godot Miscellaneous Math
-extends Object
+class_name GMM extends Object
 
 # Ordinal Numbers
 enum {
 	FIRST,
 	SECOND,
 	THIRD,
-	FOURTH,
-	FIFTH,
-	SIXTH,
-	SEVENTH,
-	EIGHTH,
-	NINTH,
-	TENTH,
-	ELEVENTH,
-	TWELFTH,
-	THIRTEENTH,
-	FOURTEENTH,
-	FIFTEENTH,
-	SIXTEENTH,
-	SEVENTEENTH,
-	EIGHTEENTH,
-	NINETEENTH,
-	TWENTIETH
+}
+
+
+enum {
+	INT64_MIN = -2 ** 63,
+	INT64_MAX = 2 ** 63 - 1,
+	INT64_LEN = 64,
+
+	INT32_MIN = -2 ** 31,
+	INT32_MAX = 2 ** 31 - 1,
+	INT32_LEN = 32,
+	UINT32_MIN = 0,
+	UINT32_MAX = 2 ** 32,
+	UINT32_LEN = 32,
+
+	INT16_MIN = -2 ** 15,
+	INT16_MAX = 2 ** 15 - 1,
+	INT16_LEN = 16,
+	UINT16_MIN = 0,
+	UINT16_MAX = 2 ** 16,
+	UINT16_LEN = 16,
+
+	INT8_MIN = -2 ** 7,
+	INT8_MAX = 2 ** 7 - 1,
+	INT8_LEN = 8,
+	UINT8_MIN = 0,
+	UINT8_MAX = 2 ** 8,
+	UINT8_LEN = 8,
 }
 
 
@@ -36,6 +47,35 @@ func chash(key: String) -> int:
 
 	for c in key.to_ascii_buffer():
 		out = out * 121 + c + length;
+
+	return out
+
+
+func crand(rseed: int) -> int:
+	return rseed * 0xecc5
+
+
+func bit_length(num: int) -> int:
+	return log(num) / log(2) + 1 as int
+
+
+func int_to_bin(num: int) -> String:
+	var string := ""
+	var val := num
+
+	for i in bit_length(val):
+		string = str(val & 1) + string
+		val >>= 1
+
+	return string
+
+
+func chashi(num: int) -> int:
+	var rseed := crand(num)
+	var out := 2
+	var length := bit_length(rseed)
+
+	out = out * 121 + rseed + length;
 
 	return out
 

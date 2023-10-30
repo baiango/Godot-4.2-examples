@@ -17,6 +17,7 @@ var input_dir: Vector2
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 var cam_rot := Vector2.ZERO
 const mouse_sensitivity := 0.003
+var impulse_queue := Vector3.ZERO
 
 
 func _input(event: InputEvent) -> void:
@@ -43,7 +44,8 @@ func handle_move(delta: float) -> void:
 	mov_param.input_dir = input_dir
 	mov_param.cam_rot = cam_rot
 	mov_param.cam_arm = cam_arm
-	velocity = phy_ser.calculate_move(mov_param)
+	velocity = phy_ser.calculate_move(mov_param) + impulse_queue
+	impulse_queue = Vector3.ZERO
 
 	var _collided := move_and_slide()
 

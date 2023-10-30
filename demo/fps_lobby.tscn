@@ -207,3 +207,9 @@ shape = SubResource("ConcavePolygonShape3D_xm478")
 
 [node name="tree-327e490eff9cfe96df2c533dd7101173" parent="." instance=ExtResource("7_d2kj0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 11)
+
+[node name="tree-327e490eff9cfe96df2c533dd7101174" parent="." instance=ExtResource("7_d2kj0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.68353, -1.90735e-06, -4.9097)
+
+[node name="tree-327e490eff9cfe96df2c533dd7101175" parent="." instance=ExtResource("7_d2kj0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81698, 0, -10.8806)

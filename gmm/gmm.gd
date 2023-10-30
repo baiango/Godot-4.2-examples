@@ -3,9 +3,9 @@ class_name GMM extends Object
 
 # Ordinal Numbers
 enum {
-	FIRST,
-	SECOND,
-	THIRD,
+	FIRST = 0,
+	SECOND = 1,
+	THIRD = 2,
 }
 
 
@@ -34,6 +34,13 @@ enum {
 	UINT8_MIN = 0,
 	UINT8_MAX = 2 ** 8,
 	UINT8_LEN = 8,
+}
+
+
+enum {
+	FALSE = 0,
+	TRUE = 1,
+	
 }
 
 
@@ -93,3 +100,12 @@ func blackbody(temperature: float) -> Color:
 		b = 0.0 if temperature <= 19.0 else 138.5177312231 * log(temperature - 10.0) - 305.0447927307
 
 	return Color(r / 255.0, minf(g / 255.0, 1.0), b / 255.0)
+
+
+func xor_vec3(v1: Vector3, v2: Vector3) -> Vector3:
+	var ret = Vector3(
+		int(v1.x) ^ int(v2.x),
+		int(v1.y) ^ int(v2.y),
+		int(v1.z) ^ int(v2.z)
+	)
+	return ret

@@ -16,8 +16,8 @@ func _on_blackbody_pressed() -> void:
 func _on_tps_pressed() -> void:
 	load_map("res://demo/tps.tscn")
 
-func _on_tranform_3d_pressed() -> void:
-	load_map("res://demo/tranform3d.tscn")
+func _on_transform_3d_pressed() -> void:
+	load_map("res://demo/transform3d.tscn")
 
 
 func load_map(scene_path: String) -> void:

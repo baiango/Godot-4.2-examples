@@ -53,8 +53,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 
 [node name="X" type="Button" parent="Right"]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 text = "1.000"
+clip_text = true
 
 [node name="Y" type="Button" parent="Right"]
 layout_mode = 2
@@ -63,6 +65,10 @@ text = "1.000"
 [node name="Z" type="Button" parent="Right"]
 layout_mode = 2
 text = "1.000"
+
+[node name="DoubleClick" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
 
 [connection signal="button_down" from="Right/X" to="." method="_on_x_button_down"]
 [connection signal="button_down" from="Right/Y" to="." method="_on_y_button_down"]

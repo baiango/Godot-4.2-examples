@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=3 uid="uid://586a6rsb2paq"]
 
-[ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/player_default.tscn" id="1_rvxp3"]
-[ext_resource type="Texture2D" uid="uid://uxk4c8budaiq" path="res://global_asset/kira/textures/abandoned_hopper_terminal_04_2k.hdr" id="2_8cglw"]
-[ext_resource type="Script" path="res://gd/player_viewport_ctrl.gd" id="2_wjma7"]
-[ext_resource type="Texture2D" uid="uid://dovdtduat2ofp" path="res://global_asset/color_grid.png" id="3_5qhwe"]
-[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://tscn/start_menu.tscn" id="5_qxgr7"]
-[ext_resource type="Script" path="res://gd/status_bar.gd" id="6_hup66"]
-[ext_resource type="Script" path="res://gd/tranform3d_label.gd" id="6_yec76"]
-[ext_resource type="PackedScene" uid="uid://bwaqi21cge243" path="res://tscn/vector_3_slider.tscn" id="7_3i1ii"]
+[ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/player_default.tscn" id="1_0p6i3"]
+[ext_resource type="Script" path="res://gd/player_viewport_ctrl.gd" id="2_tmhpr"]
+[ext_resource type="Texture2D" uid="uid://uxk4c8budaiq" path="res://global_asset/kira/textures/abandoned_hopper_terminal_04_2k.hdr" id="3_r4i2i"]
+[ext_resource type="Texture2D" uid="uid://dovdtduat2ofp" path="res://global_asset/color_grid.png" id="4_f406o"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://tscn/start_menu.tscn" id="5_kenyq"]
+[ext_resource type="Script" path="res://gd/status_bar.gd" id="6_5qp44"]
+[ext_resource type="PackedScene" uid="uid://bwaqi21cge243" path="res://tscn/vector_3_slider.tscn" id="7_gfisr"]
+[ext_resource type="Script" path="res://gd/tranform3d_label.gd" id="8_2h4xo"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_16dgc"]
 
@@ -29,7 +29,7 @@ noise = SubResource("FastNoiseLite_dtflg")
 albedo_texture = SubResource("NoiseTexture2D_7mf87")
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_s7qsv"]
-panorama = ExtResource("2_8cglw")
+panorama = ExtResource("3_r4i2i")
 
 [sub_resource type="Sky" id="Sky_lf6dc"]
 sky_material = SubResource("PanoramaSkyMaterial_s7qsv")
@@ -41,7 +41,7 @@ tonemap_mode = 1
 tonemap_white = 16.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jopnc"]
-albedo_texture = ExtResource("3_5qhwe")
+albedo_texture = ExtResource("4_f406o")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ra180"]
 material = SubResource("StandardMaterial3D_jopnc")
@@ -62,9 +62,9 @@ outline_color = Color(0, 0, 0, 1)
 mesh = SubResource("CapsuleMesh_16dgc")
 surface_material_override/0 = SubResource("StandardMaterial3D_ts6di")
 
-[node name="PlayerViewpCtrl" parent="." instance=ExtResource("1_rvxp3")]
+[node name="PlayerViewpCtrl" parent="." instance=ExtResource("1_0p6i3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
-script = ExtResource("2_wjma7")
+script = ExtResource("2_tmhpr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f2dvy")
@@ -73,7 +73,7 @@ environment = SubResource("Environment_f2dvy")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 mesh = SubResource("PlaneMesh_ra180")
 
-[node name="StartMenu" parent="." instance=ExtResource("5_qxgr7")]
+[node name="StartMenu" parent="." instance=ExtResource("5_kenyq")]
 
 [node name="Full" type="CanvasLayer" parent="."]
 
@@ -99,7 +99,7 @@ offset_right = 40.0
 offset_bottom = 23.0
 text = "A: move | S: scale | D: rotate | Z: X axis | S: Y axis | C: Z axis | RMB: Fly"
 label_settings = SubResource("LabelSettings_0hxc1")
-script = ExtResource("6_hup66")
+script = ExtResource("6_5qp44")
 
 [node name="BottomLeft" type="Control" parent="Full/Border"]
 layout_mode = 1
@@ -120,21 +120,25 @@ offset_top = -311.0
 offset_right = 153.0
 grow_vertical = 0
 
-[node name="Position" parent="Full/Border/BottomLeft/VBoxContainer" node_paths=PackedStringArray("target_node") instance=ExtResource("7_3i1ii")]
+[node name="Position" parent="Full/Border/BottomLeft/VBoxContainer" node_paths=PackedStringArray("target_node") instance=ExtResource("7_gfisr")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+target_node = NodePath("../../../../../Target")
+defult_val = 0.0
+
+[node name="Scale" parent="Full/Border/BottomLeft/VBoxContainer" node_paths=PackedStringArray("target_node") instance=ExtResource("7_gfisr")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
 target_node = NodePath("../../../../../Target")
 
-[node name="Scale" parent="Full/Border/BottomLeft/VBoxContainer" instance=ExtResource("7_3i1ii")]
+[node name="Rotation" parent="Full/Border/BottomLeft/VBoxContainer" node_paths=PackedStringArray("target_node") instance=ExtResource("7_gfisr")]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-
-[node name="Rotation" parent="Full/Border/BottomLeft/VBoxContainer" instance=ExtResource("7_3i1ii")]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
+target_node = NodePath("../../../../../Target")
+defult_val = 0.0
 
 [node name="BottomRight" type="Control" parent="Full/Border"]
 layout_mode = 1
@@ -163,4 +167,4 @@ text = "Test"
 label_settings = SubResource("LabelSettings_efghf")
 horizontal_alignment = 2
 vertical_alignment = 2
-script = ExtResource("6_yec76")
+script = ExtResource("8_2h4xo")

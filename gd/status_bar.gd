@@ -30,7 +30,7 @@ var keymap := {
 }
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	set_text(cleanse_dictionary_to_string(first_layer_only(keymap)))
 	if Input.is_action_pressed("rmb"):
 		set_text(cleanse_dictionary_to_string(first_layer_only(keymap["RMB"]["next"])))

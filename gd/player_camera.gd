@@ -8,7 +8,7 @@ class CameraParameters:
 	var event: InputEvent
 
 
-func handle_camera(param: CameraParameters) -> Vector2:
+func calculate_camera(param: CameraParameters) -> Vector2:
 	if not param.input_enabled:
 		return param.cam_rot
 

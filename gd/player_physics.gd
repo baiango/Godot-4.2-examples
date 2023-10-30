@@ -18,7 +18,7 @@ var result: Vector3
 
 
 # Factory pattern
-func handle_move(param: PhysicsParameters) -> Vector3:
+func calculate_move(param: PhysicsParameters) -> Vector3:
 
 	if param.fly:
 		_flight(param)

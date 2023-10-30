@@ -21,7 +21,7 @@ const mouse_sensitivity := 0.003
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		calculate_camera(event)
+		handle_camera(event)
 
 
 func _ready() -> void:
@@ -29,11 +29,11 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	calculate_move(delta)
+	handle_move(delta)
 
 
 # Facade pattern
-func calculate_move(delta: float) -> void:
+func handle_move(delta: float) -> void:
 	input_dir = Input.get_vector("w", "s", "a", "d")
 	mov_param.on_floor = is_on_floor()
 	mov_param.delta = delta
@@ -43,15 +43,15 @@ func calculate_move(delta: float) -> void:
 	mov_param.input_dir = input_dir
 	mov_param.cam_rot = cam_rot
 	mov_param.cam_arm = cam_arm
-	velocity = phy_ser.handle_move(mov_param)
+	velocity = phy_ser.calculate_move(mov_param)
 
 	var _collided := move_and_slide()
 
 
-func calculate_camera(event: InputEvent) -> void:
+func handle_camera(event: InputEvent) -> void:
 	cam_param.event = event
 	cam_param.mouse_sensitivity = mouse_sensitivity
-	cam_rot = cam_ser.handle_camera(cam_param)
+	cam_rot = cam_ser.calculate_camera(cam_param)
 
 	cam_arm.rotation.x = cam_rot.x
 	cam_arm.rotation.y = cam_rot.y

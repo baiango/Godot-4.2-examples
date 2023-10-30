@@ -1,11 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://586a6rsb2paq"]
+[gd_scene load_steps=21 format=3 uid="uid://586a6rsb2paq"]
 
 [ext_resource type="PackedScene" uid="uid://b771ivctnyube" path="res://tscn/player_default.tscn" id="1_rvxp3"]
 [ext_resource type="Texture2D" uid="uid://uxk4c8budaiq" path="res://global_asset/kira/textures/abandoned_hopper_terminal_04_2k.hdr" id="2_8cglw"]
 [ext_resource type="Script" path="res://gd/player_viewport_ctrl.gd" id="2_wjma7"]
 [ext_resource type="Texture2D" uid="uid://dovdtduat2ofp" path="res://global_asset/color_grid.png" id="3_5qhwe"]
-[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="5_qxgr7"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://tscn/start_menu.tscn" id="5_qxgr7"]
+[ext_resource type="Script" path="res://gd/status_bar.gd" id="6_hup66"]
 [ext_resource type="Script" path="res://gd/tranform3d_label.gd" id="6_yec76"]
+[ext_resource type="PackedScene" uid="uid://bwaqi21cge243" path="res://tscn/vector_3_slider.tscn" id="7_3i1ii"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_16dgc"]
 
@@ -45,6 +47,10 @@ albedo_texture = ExtResource("3_5qhwe")
 material = SubResource("StandardMaterial3D_jopnc")
 size = Vector2(100, 100)
 
+[sub_resource type="LabelSettings" id="LabelSettings_0hxc1"]
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_efghf"]
 font_size = 24
 outline_size = 12
@@ -79,56 +85,56 @@ anchor_right = 0.99
 anchor_bottom = 0.99
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TopLeft" type="Control" parent="Full/Border"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="StatusBar" type="Label" parent="Full/Border/TopLeft"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "A: move | S: scale | D: rotate | Z: X axis | S: Y axis | C: Z axis | RMB: Fly"
+label_settings = SubResource("LabelSettings_0hxc1")
+script = ExtResource("6_hup66")
 
 [node name="BottomLeft" type="Control" parent="Full/Border"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -0.0400391
+offset_top = -185.04
 offset_right = 244.0
-offset_bottom = -0.0400391
+offset_bottom = 0.959961
 grow_vertical = 0
 
-[node name="rot_x" type="HSlider" parent="Full/Border/BottomLeft"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Full/Border/BottomLeft"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -73.48
-offset_bottom = -57.48
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-max_value = 360.0
+offset_top = -311.0
+offset_right = 153.0
+grow_vertical = 0
 
-[node name="rot_y" type="HSlider" parent="Full/Border/BottomLeft"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -49.48
-offset_bottom = -33.48
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-max_value = 360.0
+[node name="Position" parent="Full/Border/BottomLeft/VBoxContainer" node_paths=PackedStringArray("target_node") instance=ExtResource("7_3i1ii")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+target_node = NodePath("../../../../../Target")
 
-[node name="rot_z" type="HSlider" parent="Full/Border/BottomLeft"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -3.52
-offset_top = -25.96
-offset_right = 0.479996
-offset_bottom = -9.95996
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-max_value = 360.0
+[node name="Scale" parent="Full/Border/BottomLeft/VBoxContainer" instance=ExtResource("7_3i1ii")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+
+[node name="Rotation" parent="Full/Border/BottomLeft/VBoxContainer" instance=ExtResource("7_3i1ii")]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 
 [node name="BottomRight" type="Control" parent="Full/Border"]
 layout_mode = 1
@@ -158,7 +164,3 @@ label_settings = SubResource("LabelSettings_efghf")
 horizontal_alignment = 2
 vertical_alignment = 2
 script = ExtResource("6_yec76")
-
-[connection signal="value_changed" from="Full/Border/BottomLeft/rot_x" to="Full/Border/BottomRight/Stat" method="_on_rot_x_value_changed"]
-[connection signal="value_changed" from="Full/Border/BottomLeft/rot_y" to="Full/Border/BottomRight/Stat" method="_on_rot_y_value_changed"]
-[connection signal="value_changed" from="Full/Border/BottomLeft/rot_z" to="Full/Border/BottomRight/Stat" method="_on_rot_z_value_changed"]

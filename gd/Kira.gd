@@ -7,6 +7,10 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	handle_animation(delta)
+
+
+func handle_animation(delta: float) -> void:
 	# --- Mesh --- #
 	var ske := $CollisionShape3D/MeshInstance3D
 	if input_dir != Vector2.ZERO:

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://dv80gyewcshnx"]
 
 [ext_resource type="Material" uid="uid://bxddsxbpae5uo" path="res://mat/floor.material" id="1_8u2cu"]
-[ext_resource type="PackedScene" uid="uid://c5mn3hokil1bh" path="res://demo/kira.tscn" id="1_44the"]
-[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="3_q3ibj"]
+[ext_resource type="PackedScene" uid="uid://c5mn3hokil1bh" path="res://tscn/kira.tscn" id="1_44the"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://tscn/start_menu.tscn" id="3_q3ibj"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4svwq"]
 material = ExtResource("1_8u2cu")

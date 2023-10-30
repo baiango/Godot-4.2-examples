@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://gd/numbersum_oop.gd" id="1_742l6"]
 [ext_resource type="Script" path="res://gd/numbersum_fp.gd" id="2_hdaaj"]
 [ext_resource type="Script" path="res://gd/numbersum_pp.gd" id="3_cv1w2"]
-[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://demo/start_menu.tscn" id="4_ngh5l"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://tscn/start_menu.tscn" id="4_ngh5l"]
 
 [node name="NumberSum" type="Node2D"]
 

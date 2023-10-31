@@ -22,6 +22,11 @@ func _on_transform_3d_pressed() -> void:
 func _on_fps_lobby_pressed() -> void:
 	load_map("res://demo/fps_lobby.tscn")
 
+func _on_fourier_series_pressed() -> void:
+	load_map("res://demo/fourier_series.tscn")
+
 
 func load_map(scene_path: String) -> void:
 	get_tree().change_scene_to_file(scene_path)
+
+

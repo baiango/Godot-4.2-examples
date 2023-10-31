@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://00dlqx4i80ar"]
+
+[ext_resource type="Script" path="res://gd/line2d_tween.gd" id="1_3kchd"]
+[ext_resource type="Script" path="res://gd/switch_scene_button.gd" id="1_let4u"]
+[ext_resource type="PackedScene" uid="uid://clvos14c6vsio" path="res://tscn/polygon_generator.tscn" id="2_4ahdi"]
+[ext_resource type="Script" path="res://gd/fourier_series_arrow.gd" id="2_tofm6"]
+[ext_resource type="PackedScene" uid="uid://d0gskm7yu2i8t" path="res://tscn/start_menu.tscn" id="5_re0pf"]
+
+[node name="Full" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="Border" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="TopRight" type="Control" parent="Border"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="PolygonGenerator" type="Button" parent="Border/TopRight"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -151.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "Polygon generator"
+alignment = 0
+script = ExtResource("1_let4u")
+scene_file = ExtResource("2_4ahdi")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(128, 416, 240, 224, 384, 424, 544, 248, 608, 392, 752, 376, 832, 288, 936, 416)
+script = ExtResource("1_3kchd")
+
+[node name="Pen" type="Node2D" parent="Line2D"]
+
+[node name="Depth1" type="Node2D" parent="."]
+position = Vector2(440, 352)
+scale = Vector2(50, 50)
+script = ExtResource("2_tofm6")
+
+[node name="StartMenu" parent="." instance=ExtResource("5_re0pf")]

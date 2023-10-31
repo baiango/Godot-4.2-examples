@@ -42,17 +42,17 @@ metadata/_edit_lock_ = true
 
 [node name="MVVM" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
-text = "Model-View-ViewModel"
+text = "Model-View-ViewModel (MVVM)"
 icon = ExtResource("2_h2611")
 alignment = 0
 
 [node name="WST" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
-text = "World Space Texture"
+text = "World Space Texture (Triplanar UV)"
 
 [node name="Blackbody" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
-text = "Blackbody"
+text = "Blackbody (Color temperature)"
 
 [node name="SDFGI" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
@@ -61,12 +61,11 @@ flat = true
 
 [node name="Transform3D" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
-text = "Transform3D"
+text = "Transform3D (3×4 matrix)"
 
-[node name="Tween" type="Button" parent="Border/GridContainer"]
+[node name="FourierSeries" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
-text = "Tween"
-flat = true
+text = "Fourier series (Tween)"
 
 [node name="AudioStreamPlayer3D" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
@@ -79,7 +78,7 @@ text = "NumberSum (Object-Oriented Programming)"
 
 [node name="TPS" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
-text = "Third-person shooter"
+text = "Third-person shooter (Character)"
 
 [node name="FPSLobby" type="Button" parent="Border/GridContainer"]
 layout_mode = 2
@@ -118,6 +117,7 @@ vertical_alignment = 2
 [connection signal="pressed" from="Border/GridContainer/WST" to="." method="_on_wst_pressed"]
 [connection signal="pressed" from="Border/GridContainer/Blackbody" to="." method="_on_blackbody_pressed"]
 [connection signal="pressed" from="Border/GridContainer/Transform3D" to="." method="_on_transform_3d_pressed"]
+[connection signal="pressed" from="Border/GridContainer/FourierSeries" to="." method="_on_fourier_series_pressed"]
 [connection signal="pressed" from="Border/GridContainer/NumberSum" to="." method="_on_number_sum_pressed"]
 [connection signal="pressed" from="Border/GridContainer/TPS" to="." method="_on_tps_pressed"]
 [connection signal="pressed" from="Border/GridContainer/FPSLobby" to="." method="_on_fps_lobby_pressed"]

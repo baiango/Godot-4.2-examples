@@ -1,4 +1,4 @@
-# Godot Miscellaneous Math
+# Godot Miscellaneous Math Libary
 class_name GMM extends Object
 
 # Ordinal Numbers
@@ -109,3 +109,13 @@ func xor_vec3(v1: Vector3, v2: Vector3) -> Vector3:
 		int(v1.z) ^ int(v2.z)
 	)
 	return ret
+
+
+func linear_lerpf(
+	from: float, start: float, end: float, weight: float
+) -> float:
+	var val_min := minf(start, end)
+	var val_max := maxf(start, end)
+	var lerped_value = lerpf(start, end, weight)
+	
+	return clampf(from + -(start - lerped_value), val_min, val_max)

@@ -63,7 +63,7 @@ func crand(rseed: int) -> int:
 
 
 func bit_length(num: int) -> int:
-	return log(num) / log(2) + 1 as int
+	return log(num) / log(2.0) + 1.0 as int
 
 
 func int_to_bin(num: int) -> String:
@@ -103,7 +103,7 @@ func blackbody(temperature: float) -> Color:
 
 
 func xor_vec3(v1: Vector3, v2: Vector3) -> Vector3:
-	var ret = Vector3(
+	var ret := Vector3(
 		int(v1.x) ^ int(v2.x),
 		int(v1.y) ^ int(v2.y),
 		int(v1.z) ^ int(v2.z)
@@ -116,6 +116,6 @@ func linear_lerpf(
 ) -> float:
 	var val_min := minf(start, end)
 	var val_max := maxf(start, end)
-	var lerped_value = lerpf(start, end, weight)
+	var lerped_value := lerpf(start, end, weight)
 	
-	return clampf(from + -(start - lerped_value), val_min, val_max)
+	return clampf(from - (start - lerped_value), val_min, val_max)

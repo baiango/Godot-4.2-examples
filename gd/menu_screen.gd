@@ -28,5 +28,3 @@ func _on_fourier_series_pressed() -> void:
 
 func load_map(scene_path: String) -> void:
 	get_tree().change_scene_to_file(scene_path)
-
-

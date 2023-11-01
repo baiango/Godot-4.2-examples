@@ -1,4 +1,5 @@
 class_name PlayerController extends CharacterBody3D
+#  Multi inheritance this by "extends PlayerController"
 
 
 @onready var cam_arm: SpringArm3D = $SpringArm3D
@@ -34,6 +35,9 @@ func _physics_process(delta: float) -> void:
 
 
 # Facade pattern
+# Godot doesn't had pointers, where's C++/Rust/Fortran?
+# So I can't pass this object to "PlayerPhysics"
+# I have to create "class PhysicsParameters" to pass it through
 func handle_move(delta: float) -> void:
 	input_dir = Input.get_vector("w", "s", "a", "d")
 	mov_param.on_floor = is_on_floor()
@@ -50,6 +54,7 @@ func handle_move(delta: float) -> void:
 	var _collided := move_and_slide()
 
 
+# Same for "PlayerCamera"
 func handle_camera(event: InputEvent) -> void:
 	cam_param.event = event
 	cam_param.mouse_sensitivity = mouse_sensitivity

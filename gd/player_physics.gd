@@ -18,8 +18,8 @@ var result: Vector3
 
 
 # Factory pattern
+# It will choose based on the selected mode to calculate it
 func calculate_move(param: PhysicsParameters) -> Vector3:
-
 	if param.fly:
 		_flight(param)
 	else:

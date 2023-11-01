@@ -12,7 +12,7 @@ func _ready() -> void:
 	pen.set_position(Vector2(250.0, 250.0))
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_var()
 
 	tween = create_tween()
@@ -31,4 +31,3 @@ func update_var() -> void:
 func clear() -> void:
 	clear_points()
 	pen.position.x = viewport_size.x * 0.05
-
